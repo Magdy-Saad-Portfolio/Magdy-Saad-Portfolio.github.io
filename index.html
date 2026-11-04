@@ -1,701 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magdy Saad - UI/UX Designer</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-      // Apply theme before paint to avoid flash of wrong theme
-      (function () {
-        try {
-          var saved = localStorage.getItem('theme');
-          var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-          document.documentElement.setAttribute('data-theme', theme);
-        } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      })();
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Magdy Saad, Product Designer (UI/UX)</title>
+  <meta name="description" content="Magdy Saad is a Product Designer (UI/UX) in Cairo designing Arabic-first mobile and web products: live SaaS, design systems, AI-native workflows and user research.">
+  <meta name="theme-color" content="#0B1530">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Magdy Saad, Product Designer (UI/UX)">
+  <meta property="og:description" content="Five projects, each showing a different part of how I work: shipping a live product, design systems, bilingual scale, AI-native workflows and user research.">
+  <meta property="og:image" content="https://magdy-saad-portfolio.github.io/assets/img/cover-elayadah.jpg">
+  <meta property="og:url" content="https://magdy-saad-portfolio.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700&family=Funnel+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/cover-elayadah.jpg">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <div class="bg-gradient"></div>
-    <div class="bg-dots"></div>
-
-    <nav class="nav" aria-label="Main navigation">
-        <div class="nav-links">
-            <a href="#about" class="nav-link">About</a>
-            <a href="#work" class="nav-link">Work</a>
-            <a href="#skills" class="nav-link">Skills</a>
-            <a href="#contact" class="nav-link-cta">Contact</a>
-        </div>
-        <div class="nav-actions">
-            <button type="button" id="cvNavBtn" class="nav-link-cv" hidden onclick="openCvModal()">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                <span id="cvNavBtnText">View CV</span>
-            </button>
-            <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle dark / light mode" title="Toggle theme" onclick="toggleTheme()">
-                <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            </button>
-        </div>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#home"><img src="assets/img/profile.jpg" alt="" width="36" height="36"><span>Magdy Saad<small id="navRole">Product Designer (UI/UX)</small></span></a>
+    <nav class="nav" aria-label="Main">
+      <span class="links"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></span>
+      <button class="btn btn-main" type="button" data-cv style="min-height:42px;padding:0 18px">View CV</button>
     </nav>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
 
-    <!-- CV Modal -->
-    <div class="cv-modal" id="cvModal" hidden role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
-        <div class="cv-modal-backdrop" onclick="closeCvModal()"></div>
-        <div class="cv-modal-panel" role="document">
-            <div class="cv-modal-header">
-                <div class="cv-modal-heading">
-                    <span class="cv-modal-icon" aria-hidden="true">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                    </span>
-                    <h3 class="cv-modal-title" id="cvModalTitle">Résumé</h3>
-                </div>
-                <div class="cv-modal-actions">
-                    <a href="#" id="cvDownloadBtn" class="btn btn-primary cv-download-btn" download>
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Download CV
-                    </a>
-                    <button type="button" class="cv-modal-close" aria-label="Close" onclick="closeCvModal()">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    </button>
-                </div>
-            </div>
-            <div class="cv-modal-body" id="cvModalBody">
-                <div class="cv-modal-loading">Loading CV…</div>
-            </div>
+<main id="home">
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <h1 class="words" data-split id="heroTitle">Hi, I'm Magdy. I design products people use every day.</h1>
+        <p class="lead" data-r id="heroLead">Five projects below, each showing a different part of how I work: shipping a live product, design systems, bilingual scale, AI-native workflows and user research.</p>
+        <div class="cta" data-r>
+          <button class="btn btn-main" type="button" data-cv>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View CV</button>
+          <a class="btn btn-ghost" href="cv/Magdy_Saad_CV.pdf" download="Magdy_Saad_CV.pdf" data-cv-dl>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>Download CV</a>
+          <a class="btn btn-ghost" href="#work">See the work</a>
         </div>
+      </div>
+      <div data-r="scale">
+        <div class="stage">
+          <div class="deck" aria-label="The five projects">
+            <div class="card"><img src="assets/img/cover-elayadah.jpg" alt="Elayadah clinic booking app"></div>
+            <div class="card"><img src="assets/img/cover-gathern.jpg" alt="Gathern Website Design System"></div>
+            <div class="card"><img src="assets/img/cover-momentum.jpg" alt="Momentum Design System"></div>
+            <div class="card"><img src="assets/img/cover-syarah.jpg" alt="Syarah UX case study"></div>
+            <div class="card"><img src="assets/img/cover-momentumdocs.jpg" alt="Momentum documentation site"></div>
+          </div>
+        </div>
+        <div class="caps" aria-hidden="true">
+          <span class="cap"><b>Elayadah</b>, clinic booking SaaS, live</span>
+          <span class="cap"><b>Momentum docs</b>, documentation site</span>
+          <span class="cap"><b>Syarah</b>, UX case study</span>
+          <span class="cap"><b>Momentum</b>, design system</span>
+          <span class="cap"><b>Gathern</b>, website design system</span>
+        </div>
+      </div>
     </div>
+    <nav class="idx" aria-label="Projects" data-r>
+      <a href="#ship"><small>Shipping</small><b>Elayadah</b></a>
+      <a href="#scale"><small>Systems at scale</small><b>Gathern</b></a>
+      <a href="#systems"><small>Design systems</small><b>Momentum</b></a>
+      <a href="#ai"><small>AI-native design</small><b>Agentic DS</b></a>
+      <a href="#research"><small>User research</small><b>Syarah</b></a>
+    </nav>
+  </section>
 
-    <main id="main-content">
+  <div class="marquee" aria-hidden="true"><div class="mtrack">
+    <span>User research</span><span>Design systems</span><span>Design tokens</span><span>RTL and bilingual UI</span><span>Prototyping</span><span>Design to code</span><span>Claude Code</span><span>Figma MCP</span>
+    <span>User research</span><span>Design systems</span><span>Design tokens</span><span>RTL and bilingual UI</span><span>Prototyping</span><span>Design to code</span><span>Claude Code</span><span>Figma MCP</span>
+  </div></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="hero-greeting">
-                        Hi, I'm <span class="hero-name">Magdy Saad</span>
-                        <svg class="wave-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/>
-                            <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/>
-                            <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/>
-                            <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
-                        </svg>
-                    </div>
-                    <div class="hero-label">UI/UX DESIGNER</div>
-                    <h1 class="hero-title">Aspiring UI/UX Designer</h1>
-                    <p class="hero-subtitle">Completed training in Figma and UI design. Bridging my legal background with user-centered thinking, eager to learn and grow in the design field.</p>
-                    <div class="hero-cta">
-                        <a href="#work" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="profile-wrapper">
-                        <img src="profile.jpg" alt="Magdy Saad" class="profile-img">
-                        <div class="profile-glow"></div>
-                    </div>
-                    <div class="status-badge" style="opacity:0">
-                        <span class="status-dot"></span>
-                        <span>Available for work</span>
-                    </div>
-                </div>
-            </div>
+  <div class="story" id="work">
+    <div class="thread" aria-hidden="true"><i id="threadFill"></i></div>
+    <div class="wrap"><p class="thread-label" data-r>Five separate projects. The thread is how I work on every one of them.</p></div>
+
+    <section class="ch" id="ship">
+      <div class="wrap" style="position:relative">
+        <span class="node" aria-hidden="true"></span>
+        <div class="ch-head" data-r><b>Shipping</b><span>Elayadah, Product Designer, Sep 2026 to now</span></div>
+        <h2 class="words" data-split>A clinic's paper notebook, turned into a booking system live in multiple clinics.</h2>
+        <div class="g12">
+          <figure style="grid-column:1/13"><div class="ph" data-ph><img src="assets/img/el-00.jpg" alt="Elayadah case study cover" data-px></div></figure>
+          <div style="grid-column:1/7" data-r><p class="body">Patients travelled to the clinic just to book, then found the slots gone. I mapped the paper workflow with the doctor and designed online, phone and walk-in booking on live availability, with emergency priority in the queue.</p></div>
+          <div class="facts" style="grid-column:8/13" data-r><div><b data-count="130" data-suffix="+">130+</b>screens</div><div><b data-count="6">6</b>booking states</div><div><b data-count="3">3</b>user groups</div></div>
         </div>
+      </div>
+      <div class="hs" id="hs">
+        <div class="hs-pin">
+          <div class="hs-track" id="hsTrack">
+            <figure><img src="assets/img/el-17.jpg" alt="Before and after: a notebook on the desk, then one queue always current"><figcaption>The same morning, twice: a notebook on the desk, then one queue, always current.</figcaption></figure>
+            <figure><img src="assets/img/el-15.jpg" alt="The booking path the secretary actually walks"><figcaption>Designed around the path the secretary actually walks.</figcaption></figure>
+            <figure><img src="assets/img/el-18.jpg" alt="Six booking states"><figcaption>Six states, one clear line from booked to done.</figcaption></figure>
+            <figure><img src="assets/img/el-20.jpg" alt="Three steps on one sheet"><figcaption>Find the patient, pick the slot, confirm.</figcaption></figure>
+            <figure><img src="assets/img/el-16.jpg" alt="Everything the app holds"><figcaption>Five places, and only Settings goes deeper.</figcaption></figure>
+          </div>
+          <p class="hs-note">Keep scrolling to move through the screens.</p>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="shows" data-r style="border-color:rgba(11,31,63,.2)"><span>What it shows</span><div>Taking a product from a paper workflow to a live release. <a class="ul" href="https://www.behance.net/gallery/255066787" target="_blank" rel="noopener">Read the case study</a></div></div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">About</span>
-                <h2 class="section-title">Bridging Law and Design</h2>
-            </div>
-            
-            <div class="about-grid">
-                <div class="about-content">
-                    <p class="lead">After completing my law degree, I realized my passion wasn't in courtrooms. It was in solving problems for people through design.</p>
-                    
-                    <p class="about-body">I'm currently transitioning into UI/UX, completing intensive training at Cradis Academy in UX bootcamp and design systems.</p>
-                    
-                    <p>What I bring to a design team:</p>
-                    
-                    <ul class="about-list">
-                        <li>Analytical thinking from my legal background</li>
-                        <li>Attention to detail and structured problem-solving</li>
-                        <li>Genuine curiosity about user behavior</li>
-                        <li>Eagerness to learn and grow with the team</li>
-                    </ul>
-                    
-                    <p class="highlight">Looking for an opportunity in the design industry, a place to grow, contribute, and help build products that make people's lives easier.</p>
-                </div>
-                
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        </div>
-                        <div class="stat-text">
-                            <div class="stat-number">2</div>
-                            <div class="stat-label">Real Projects</div>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                        </div>
-                        <div class="stat-text">
-                            <div class="stat-number">144+</div>
-                            <div class="stat-label">Training Hours</div>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-                        </div>
-                        <div class="stat-text">
-                            <div class="stat-number">4</div>
-                            <div class="stat-label">Certifications</div>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-                        </div>
-                        <div class="stat-text">
-                            <div class="stat-number">1 yr</div>
-                            <div class="stat-label">Years Learning</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-wrapper">
-                <h3 class="timeline-title">My Journey So Far</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker">
-                            <div class="timeline-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                            </div>
-                            <div class="timeline-line"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">JUN 2022</div>
-                            <div class="timeline-heading">Law Degree Completed</div>
-                            <div class="timeline-desc">Graduated with a focus on analytical thinking</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-marker">
-                            <div class="timeline-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
-                            </div>
-                            <div class="timeline-line"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">2024</div>
-                            <div class="timeline-heading">Started UX Journey at Cradis</div>
-                            <div class="timeline-desc">Began intensive UX bootcamp</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-marker">
-                            <div class="timeline-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-                            </div>
-                            <div class="timeline-line"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">NOV 2025</div>
-                            <div class="timeline-heading">UX Bootcamp Certified</div>
-                            <div class="timeline-desc">110+ hours of UX research, prototyping, and testing</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-toggle-wrapper">
-                        <button class="timeline-toggle-btn" id="timelineToggleBtn" type="button" aria-expanded="false" aria-controls="timeline-extra">
-                            <span id="timelineToggleText">See My Full Journey</span>
-                            <svg id="timelineToggleIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div class="timeline-extra" id="timeline-extra" hidden>
-                        <div class="timeline-item">
-                            <div class="timeline-marker">
-                                <div class="timeline-icon">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
-                                </div>
-                                <div class="timeline-line"></div>
-                            </div>
-                            <div class="timeline-content">
-                                <div class="timeline-date">DEC 2025</div>
-                                <div class="timeline-heading">Started Design Systems Bootcamp at Cradis</div>
-                                <div class="timeline-desc">Specialized training in design systems and tokens</div>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-marker">
-                                <div class="timeline-icon">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-                                </div>
-                                <div class="timeline-line"></div>
-                            </div>
-                            <div class="timeline-content">
-                                <div class="timeline-date">JAN 2026</div>
-                                <div class="timeline-heading">Design Systems Certified</div>
-                                <div class="timeline-desc">Completed 34+ hours in design systems and tokens</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item timeline-current">
-                        <div class="timeline-marker">
-                            <div class="timeline-icon timeline-icon-current">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
-                            </div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-date-row">
-                                <span class="timeline-date timeline-date-current">MAY 15, 2026</span>
-                                <span class="timeline-badge"><span class="status-dot" style="width:6px;height:6px;display:inline-block;margin-right:5px;vertical-align:middle;flex-shrink:0;"></span>ONGOING</span>
-                            </div>
-                            <div class="timeline-heading">Started UI Bootcamp at Cradis</div>
-                            <div class="timeline-desc">Currently in progress, expanding into visual design</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="ch" id="scale">
+      <div class="wrap" style="position:relative">
+        <span class="node" aria-hidden="true"></span>
+        <div class="ch-head" data-r><b>Systems at scale</b><span>Gathern Website Design System, team, 2026</span></div>
+        <h2 class="words" data-split>One source of tokens for two languages, two themes and every page.</h2>
+        <div class="g12">
+          <div style="grid-column:1/5;display:flex;flex-direction:column;gap:24px" data-r="left">
+            <p class="body">For Gathern's booking website we built a foundation, not a redesign: Arabic and English, light and dark, all from one set of tokens and components.</p>
+            <div class="facts"><div><b data-count="30">30</b>components</div><div><b data-count="2">2</b>languages</div><div><b data-count="2">2</b>themes</div></div>
+            <a class="ul" href="https://www.behance.net/gallery/254556907" target="_blank" rel="noopener" style="font-weight:500">Read the case study</a>
+          </div>
+          <figure style="grid-column:5/13"><div class="ph" data-ph><img src="assets/img/ga-00.jpg" alt="Gathern design system overview" data-px></div></figure>
+          <figure style="grid-column:1/7"><div class="ph" data-ph><img src="assets/img/ga-09.jpg" alt="Understanding the website's hidden structure"></div><figcaption>Understanding the hidden structure of the real website.</figcaption></figure>
+          <figure style="grid-column:7/13"><div class="ph" data-ph><img src="assets/img/ga-17.jpg" alt="Stress-testing the system on real pages"></div><figcaption>Stress-testing the system on real pages.</figcaption></figure>
         </div>
+        <div class="shows" data-r style="border-color:rgba(255,255,255,.22)"><span>What it shows</span><div>Building a system that holds up across languages, themes and a whole team.</div></div>
+      </div>
     </section>
 
-    <!-- Work Section -->
-    <section id="work" class="work">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Portfolio</span>
-                <h2 class="section-title">Selected Projects</h2>
-            </div>
-            
-            <article class="project">
-                <div class="project-image-wrapper">
-                    <img src="project1.webp" loading="lazy" alt="Behind the Wheel of Trust" class="project-image">
-                    <div class="project-overlay"></div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Behind the Wheel of Trust</h3>
-                    <p class="project-description">A UX case study exploring how to build confidence and clarity in the digital car buying experience. This project examines how design can intentionally shape trust beyond just creating faster transactions.</p>
-                    
-                    <div class="project-tags">
-                        <span class="tag">UX Research</span>
-                        <span class="tag">User Interviews</span>
-                        <span class="tag">Case Study</span>
-                    </div>
-                    
-                    <div class="project-tools">
-                        <span>Figma</span>
-                        <span>Google Meet</span>
-                        <span>Claude AI</span>
-                    </div>
-                    
-                    <a href="https://www.behance.net/gallery/237435523/Behind-the-Wheel-of-Trust-Syarah-App-UX-Case-Study" target="_blank" class="project-link">
-                        View Full Case Study →
-                    </a>
-                </div>
-            </article>
-
-            <article class="project project-reverse">
-                <div class="project-image-wrapper">
-                    <img src="project2.gif" loading="lazy" alt="Momentum Design System" class="project-image">
-                    <div class="project-overlay"></div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Momentum Design System</h3>
-                    <p class="project-description">A system-first approach to designing a stock trading application. Rather than starting with screens, this project focused on building trust through structure, consistency, and a comprehensive design system.</p>
-                    
-                    <div class="project-tags">
-                        <span class="tag">Design System</span>
-                        <span class="tag">Components</span>
-                        <span class="tag">Documentation</span>
-                    </div>
-                    
-                    <div class="project-tools">
-                        <span>Figma</span>
-                        <span>Figma Make</span>
-                        <span>ChatGPT</span>
-                    </div>
-                    
-                    <div class="project-links">
-                        <a href="https://www.behance.net/gallery/242129933/Momentum-Design-System" target="_blank" class="project-link">
-                            View Case Study →
-                        </a>
-                        <a href="https://moumentum-design-system.netlify.app/" target="_blank" class="project-link-secondary">
-                            Live Documentation →
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <div class="view-more">
-                <a href="https://www.behance.net/Mersawy_Saad" target="_blank" class="btn btn-outline">
-                    View Full Portfolio on Behance
-                </a>
-            </div>
+    <section class="ch" id="systems">
+      <div class="wrap" style="position:relative">
+        <span class="node" aria-hidden="true"></span>
+        <div class="ch-head" data-r><b>Design systems</b><span>Momentum Design System, team design and solo docs, Jan 2026</span></div>
+        <h2 class="words" data-split>Decisions made once, so no screen has to make them again.</h2>
+        <div class="g12">
+          <figure style="grid-column:1/13"><div class="ph" data-ph><img src="assets/img/mo-00.jpg" alt="Momentum Design System for a stock trading app" data-px></div></figure>
+          <figure style="grid-column:1/7"><div class="ph" data-ph><img src="assets/img/mo-13.jpg" alt="Momentum type scale"></div><figcaption>The type scale, from headline to caption.</figcaption></figure>
+          <figure style="grid-column:7/13"><div class="ph" data-ph><img src="assets/img/mo-24.jpg" alt="Momentum components"></div><figcaption>Components built from tokens and variables, with dark mode.</figcaption></figure>
+          <div style="grid-column:1/7;display:flex;flex-direction:column;gap:20px" data-r>
+            <p class="body">For a stock trading app we co-designed tokens, variables and components. I then built its live documentation site on my own, with search and a page for every component.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:24px;font-weight:500"><a class="ul" href="https://www.behance.net/gallery/242129933" target="_blank" rel="noopener">Read the case study</a><a class="ul" href="https://moumentum-design-system.netlify.app" target="_blank" rel="noopener">Open the docs site</a></div>
+          </div>
+          <div class="facts" style="grid-column:8/13" data-r><div><b data-count="180" data-suffix="+">180+</b>design tokens</div><div><b data-count="1">1</b>live docs site</div></div>
         </div>
+        <div class="shows" data-r style="border-color:rgba(255,255,255,.22)"><span>What it shows</span><div>Turning design decisions into tokens, components and documentation people can use.</div></div>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Capabilities</span>
-                <h2 class="section-title">Skills & Expertise</h2>
-            </div>
-            
-            <div class="skills-grid">
-
-                <div class="skill-cat-card">
-                    <div class="skill-cat-header">
-                        <div class="skill-cat-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-                            </svg>
-                        </div>
-                        <h3 class="skill-cat-title">UX Design</h3>
-                        <span class="skill-cat-count">9 skills</span>
-                    </div>
-                    <div class="skill-pills">
-                        <span class="skill-pill">UX Thinking</span>
-                        <span class="skill-pill">User Research</span>
-                        <span class="skill-pill">User Interviews</span>
-                        <span class="skill-pill">Problem Definition</span>
-                        <span class="skill-pill">Pain Point Analysis</span>
-                        <span class="skill-pill">User Flows</span>
-                        <span class="skill-pill">Information Architecture</span>
-                        <span class="skill-pill">Usability Testing</span>
-                        <span class="skill-pill">Competitive Analysis</span>
-                    </div>
-                </div>
-
-                <div class="skill-cat-card">
-                    <div class="skill-cat-header">
-                        <div class="skill-cat-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                <path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>
-                            </svg>
-                        </div>
-                        <h3 class="skill-cat-title">Design Systems</h3>
-                        <span class="skill-cat-count">8 skills</span>
-                    </div>
-                    <div class="skill-pills">
-                        <span class="skill-pill">Scalable Design Systems</span>
-                        <span class="skill-pill">Design Tokens</span>
-                        <span class="skill-pill">Figma Components</span>
-                        <span class="skill-pill">Figma Variants</span>
-                        <span class="skill-pill">Auto Layout</span>
-                        <span class="skill-pill">Design–Dev Handoff</span>
-                        <span class="skill-pill">Component Documentation</span>
-                        <span class="skill-pill">Style Guides</span>
-                    </div>
-                </div>
-
-                <div class="skill-cat-card">
-                    <div class="skill-cat-header">
-                        <div class="skill-cat-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/>
-                            </svg>
-                        </div>
-                        <h3 class="skill-cat-title">UI & Visual</h3>
-                        <span class="skill-cat-count">6 skills</span>
-                    </div>
-                    <div class="skill-pills">
-                        <span class="skill-pill">UI Design</span>
-                        <span class="skill-pill">Web Interface Design</span>
-                        <span class="skill-pill">UI Prototyping</span>
-                        <span class="skill-pill">Wireframing</span>
-                        <span class="skill-pill">Prototyping</span>
-                        <span class="skill-pill">Responsive Design</span>
-                    </div>
-                </div>
-
-                <div class="skill-cat-card">
-                    <div class="skill-cat-header">
-                        <div class="skill-cat-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 8V4H8"/><rect x="8" y="2" width="8" height="4" rx="1"/>
-                                <path d="M18.4 6a9 9 0 1 1-12.77.04"/>
-                            </svg>
-                        </div>
-                        <h3 class="skill-cat-title">AI & Tools</h3>
-                        <span class="skill-cat-count">7 skills</span>
-                    </div>
-                    <div class="skill-pills">
-                        <span class="skill-pill">Prompt Engineering</span>
-                        <span class="skill-pill">Generative AI Tools</span>
-                        <span class="skill-pill">AI-Powered Research</span>
-                        <span class="skill-pill">AI for Persona Dev</span>
-                        <span class="skill-pill">AI-Supported Prototyping</span>
-                        <span class="skill-pill">Human-AI Collaboration</span>
-                        <span class="skill-pill">AI Workflow Integration</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="tools-container">
-                <h3 class="tools-title">Tools I Work With</h3>
-                <div class="tools-grid">
-
-                    <!-- Figma -->
-                    <div class="tool-card">
-                        <div class="tool-icon-wrap">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
-                                <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/>
-                                <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/>
-                                <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/>
-                                <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
-                            </svg>
-                        </div>
-                        <div class="tool-name">Figma<span class="tool-category">Design</span></div>
-                    </div>
-
-                    <!-- FigJam -->
-                    <div class="tool-card">
-                        <div class="tool-icon-wrap">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 20h9"/>
-                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-                            </svg>
-                        </div>
-                        <div class="tool-name">FigJam<span class="tool-category">Whiteboard</span></div>
-                    </div>
-
-                    <!-- Figma Make -->
-                    <div class="tool-card">
-                        <div class="tool-icon-wrap">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                            </svg>
-                        </div>
-                        <div class="tool-name">Figma Make<span class="tool-category">AI Design</span></div>
-                    </div>
-
-                    <!-- Notion -->
-                    <div class="tool-card">
-                        <div class="tool-icon-wrap">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 6h16M4 12h16M4 18h16"/>
-                            </svg>
-                        </div>
-                        <div class="tool-name">Notion<span class="tool-category">Documentation</span></div>
-                    </div>
-
-                    <!-- Google Meet -->
-                    <div class="tool-card">
-                        <div class="tool-icon-wrap">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.876v6.248a1 1 0 0 1-1.447.894L15 14"/>
-                                <rect x="3" y="6" width="12" height="12" rx="2"/>
-                            </svg>
-                        </div>
-                        <div class="tool-name">Google Meet<span class="tool-category">Research</span></div>
-                    </div>
-
-                    <!-- Google Forms -->
-                    <div class="tool-card">
-                        <div class="tool-icon-wrap">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <path d="M14 2v6h6"/>
-                                <path d="M8 13h8M8 17h5"/>
-                            </svg>
-                        </div>
-                        <div class="tool-name">Google Forms<span class="tool-category">Research</span></div>
-                    </div>
-
-                    <!-- Claude -->
-                    <div class="tool-card">
-                        <div class="tool-icon-wrap">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.54"/>
-                                <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.54"/>
-                            </svg>
-                        </div>
-                        <div class="tool-name">Claude<span class="tool-category">AI Assistant</span></div>
-                    </div>
-
-                    <!-- Claude Code -->
-                    <div class="tool-card">
-                        <div class="tool-icon-wrap">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="16 18 22 12 16 6"/>
-                                <polyline points="8 6 2 12 8 18"/>
-                            </svg>
-                        </div>
-                        <div class="tool-name">Claude Code<span class="tool-category">AI Coding</span></div>
-                    </div>
-
-                    <!-- ChatGPT -->
-                    <div class="tool-card">
-                        <div class="tool-icon-wrap">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                            </svg>
-                        </div>
-                        <div class="tool-name">ChatGPT<span class="tool-category">AI Assistant</span></div>
-                    </div>
-
-                    <!-- Gemini -->
-                    <div class="tool-card">
-                        <div class="tool-icon-wrap">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                            </svg>
-                        </div>
-                        <div class="tool-name">Gemini<span class="tool-category">AI Assistant</span></div>
-                    </div>
-
-                </div>
-            </div>
+    <section class="ch" id="ai">
+      <div class="wrap" style="position:relative">
+        <span class="node" aria-hidden="true"></span>
+        <div class="ch-head" data-r><b>AI-native design</b><span>Agentic Design System, solo, 2026</span></div>
+        <h2 class="words" data-split>A design system that AI agents can read, follow and check.</h2>
+        <p class="body" data-r style="margin-top:28px">Tokens stay the single source of truth. Each Figma component is linked to its code with Code Connect, and the docs are written for agents as well as people, so agents build on-system screens and flag drift. It's the system I used to ship Elayadah.</p>
+        <div class="flow" id="flow">
+          <div class="fbox" data-r><b>Tokens</b><span>Colour, type, spacing and radius, defined once.</span></div>
+          <div class="fbox" data-r style="transition-delay:.12s"><b>Components</b><span>Figma variables and components, linked to code with Code Connect.</span></div>
+          <div class="fbox" data-r style="transition-delay:.24s"><b>Agent docs</b><span>Machine-readable rules: when to use what, and what never to do.</span></div>
+          <div class="fbox" data-r style="transition-delay:.36s"><b>Screens</b><span>Claude Code and Figma MCP build on-system screens and flag drift.</span></div>
         </div>
+        <div class="shows" data-r style="border-color:rgba(255,255,255,.22)"><span>What it shows</span><div>Designing with AI agents as part of the team, from Figma to production code.</div></div>
+      </div>
     </section>
 
-    <!-- Certifications -->
-    <section class="certifications">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Credentials</span>
-                <h2 class="section-title">Professional Certifications</h2>
-            </div>
-            
-            <div class="cert-list" aria-live="polite">
-            </div>
-
-            <div class="cert-extra" id="cert-extra" hidden></div>
-
-            <div class="cert-toggle-wrapper">
-                <button class="cert-toggle-btn" id="certToggleBtn" type="button" aria-expanded="false" aria-controls="cert-extra" style="display:none">
-                    <span id="certToggleText">Show More Certifications</span>
-                    <svg id="certToggleIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"/>
-                    </svg>
-                </button>
-            </div>
+    <section class="ch" id="research">
+      <div class="wrap" style="position:relative">
+        <span class="node" aria-hidden="true"></span>
+        <div class="ch-head" data-r><b>User research</b><span>Syarah, UX case study, team, Oct 2025</span></div>
+        <h2 class="words" data-split>Before any screen, we asked 20+ people how they buy used cars online.</h2>
+        <div class="g12">
+          <figure style="grid-column:1/9"><div class="ph" data-ph><img src="assets/img/syarah.jpg" alt="Behind the Wheel of Trust, Syarah UX case study" data-px></div></figure>
+          <div style="grid-column:9/13;display:flex;flex-direction:column;gap:22px" data-r>
+            <p class="body">Buyers didn't lack listings, they lacked trust. We turned the interviews into flows, information architecture and wireframes built around clarity.</p>
+            <div class="facts"><div><b data-count="20" data-suffix="+">20+</b>interviews</div></div>
+            <p class="body" style="opacity:.8">Several of our proposed solutions later appeared in the live Syarah app.</p>
+            <a class="ul" href="https://www.behance.net/gallery/237435523" target="_blank" rel="noopener" style="font-weight:500">Read the case study</a>
+          </div>
         </div>
+        <div class="shows" data-r style="border-color:rgba(255,255,255,.22)"><span>What it shows</span><div>Starting with people, and turning what they say into structure.</div></div>
+      </div>
     </section>
+  </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Get in Touch</span>
-                <h2 class="section-title">Let's Work Together</h2>
-            </div>
-
-            <div class="contact-grid">
-
-                <!-- Left: Contact Methods -->
-                <div class="contact-left">
-                    <p class="contact-intro">I'm currently open to freelance projects and full-time opportunities. Whether you have a specific project in mind or just want to chat about design, I'd be happy to connect.</p>
-
-                    <div class="contact-methods">
-                        <div class="contact-item">
-                            <div class="contact-icon-wrap">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                    <polyline points="22,6 12,13 2,6"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Email</span>
-                                <span class="contact-value contact-email-val">magdy10151125@gmail.com</span>
-                            </div>
-                            <button class="copy-btn" aria-label="Copy email address" onclick="copyToClipboard('magdy10151125@gmail.com', this)">
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon-wrap">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text">
-                                <span class="contact-label">Phone</span>
-                                <span class="contact-value contact-phone-val">+20 0100 492 2129</span>
-                            </div>
-                            <button class="copy-btn" aria-label="Copy phone number" onclick="copyToClipboard('+2001004922129', this)">
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/magdy-saad-80025236b/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile (opens in new tab)" class="social-link">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
-                            </svg>
-                            LinkedIn
-                        </a>
-                        <a href="https://www.behance.net/Mersawy_Saad" target="_blank" rel="noopener noreferrer" aria-label="Visit Behance portfolio (opens in new tab)" class="social-link">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M6.5 4.5h3.75c1.75 0 3.25.75 3.25 2.5s-1.5 2.5-3.25 2.5H6.5V4.5zm0 5.5h4c2 0 3.5 1 3.5 3s-1.5 3-3.5 3h-4v-6zm9-3h5v1h-5v-1zm.5 4c0-1.93 1.57-3.5 3.5-3.5s3.5 1.57 3.5 3.5v.5h-6c.15 1.29 1.29 2 2.5 2 .93 0 1.64-.43 2-1h1.57c-.5 1.57-2 2.5-3.57 2.5-2.07 0-3.5-1.57-3.5-3.5v-.5z"/>
-                            </svg>
-                            Behance
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Right: CTA Box -->
-                <div class="contact-cta-box">
-                    <div class="status-badge cta-badge" style="opacity:0">
-                        <span class="status-dot"></span>
-                        <span>Available for work</span>
-                    </div>
-                    <h3 class="cta-title">Ready to collaborate?</h3>
-                    <p class="cta-desc">Open to freelance projects and full-time design opportunities. Let's build something great together.</p>
-                    <a href="mailto:magdy10151125@gmail.com" class="btn btn-primary btn-large" onclick="openEmail(event)">Send Email →</a>
-                </div>
-
-            </div>
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <figure data-r="left"><div class="ph" data-ph style="--cover:var(--ink)"><img src="assets/img/profile.jpg" alt="Magdy Saad" style="aspect-ratio:4/5;object-fit:cover"></div></figure>
+      <div>
+        <h2 class="words" data-split id="aboutTitle">About me</h2>
+        <p data-r id="aboutLead">I'm Magdy, a Product Designer in Cairo. I design Arabic-first mobile and web products, with Claude Code, Figma MCP and AI agents built into my process from research to code.</p>
+        <p data-r id="aboutBody">Before design I studied law (English Section) at Mansoura University. It taught me to read rules closely and think in edge cases. Design systems are rules too.</p>
+        <div style="margin-top:36px" data-r id="expRows">
+          <div class="xrow"><span>Sep 2026 to now</span><b>Product Designer, Elayadah</b></div>
+          <div class="xrow"><span>May to Aug 2026</span><b>UI Design Program, Cradis, 72+ hours</b></div>
+          <div class="xrow"><span>Dec 2025 to Jan 2026</span><b>Design Systems and Tokens, Cradis, 34+ hours</b></div>
+          <div class="xrow"><span>Aug to Oct 2025</span><b>UX Design Program, Cradis, 110+ hours</b></div>
+          <div class="xrow" style="border-bottom:1px solid var(--line)"><span>Certificates</span><b style="font-weight:400">Anthropic, Introduction to Claude Cowork. LinkedIn Learning, Using AI in the UX Design Process. MCIT with MBS, BI and AI Workshop Program.</b></div>
         </div>
-    </section>
-
-    </main>
-
-    <!-- Footer - SIMPLE COPYRIGHT ONLY -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p id="footerCopy">© 2025 Magdy Saad. All rights reserved.</p>
-            </div>
+        <div class="cta" data-r>
+          <button class="btn btn-main" type="button" data-cv>View CV</button>
+          <a class="btn btn-ghost" href="cv/Magdy_Saad_CV.pdf" download="Magdy_Saad_CV.pdf" data-cv-dl>Download CV</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
-    <script src="supabase-loader.js"></script>
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="avail" data-r id="avail">Available for full-time and contract roles, remote or relocation.</p>
+      <h2 class="words" data-split>Working on a product? Let's talk.</h2>
+      <a class="mail ul" href="mailto:magdy10151125@gmail.com" data-r id="mail">magdy10151125@gmail.com</a>
+      <div class="cta" data-r>
+        <button class="btn btn-main" type="button" data-cv>View CV</button>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/magdy-saad-80025236b/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://www.behance.net/Mersawy_Saad" target="_blank" rel="noopener">Behance</a>
+      </div>
+      <div class="foot"><span id="footText">© 2026 Magdy Saad</span><span>Cairo, Egypt</span></div>
+    </div>
+  </section>
+</main>
+
+<dialog class="cv" id="cv" aria-labelledby="cvTitle">
+  <div class="cv-bar">
+    <b id="cvTitle">Magdy Saad, CV</b>
+    <div class="acts">
+      <a class="btn btn-main" href="cv/Magdy_Saad_CV.pdf" download="Magdy_Saad_CV.pdf" data-cv-dl>Download PDF</a>
+      <button class="btn btn-ghost" type="button" id="cvClose">Close</button>
+    </div>
+  </div>
+  <div class="cv-pages" id="cvPages">
+    <img src="cv/page-1.jpg" alt="CV page 1" loading="lazy">
+    <img src="cv/page-2.jpg" alt="CV page 2" loading="lazy">
+  </div>
+</dialog>
+
+<script src="script.js"></script>
+<script src="supabase-loader.js"></script>
 </body>
 </html>
