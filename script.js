@@ -89,14 +89,14 @@
   // CV viewer
   var dlg = document.getElementById('cv');
   document.querySelectorAll('[data-cv]').forEach(function (b) {
-    b.addEventListener('click', function () { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); });
+    b.addEventListener('click', function () { dlg.querySelectorAll('img[data-src]').forEach(function (i) { i.src = i.dataset.src; i.removeAttribute('data-src'); }); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); });
   });
   document.getElementById('cvClose').addEventListener('click', function () { dlg.close(); });
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
 
   // Used by supabase-loader.js after it swaps in text from the dashboard.
   window.Site = {
-    resplit: function (el) { split(el); if (io) io.observe(el); },
+    resplit: function (el) { split(el); if (io) { io.unobserve(el); io.observe(el); } },
     observe: observe
   };
 })();
